@@ -4,6 +4,7 @@
     <h2>Register</h2>
 
     <div class="content">
+      <p><%=@session_message if @session_message%></p>
       <form action="/register" method="POST">
         Name:
         <br>
@@ -15,7 +16,7 @@
         <br>
         E-mail:
         <br>
-        <input type="text" name="email" id="scientist_email">
+        <input type="email" name="email" id="scientist_email">
         <br>
         Password:
         <br>
