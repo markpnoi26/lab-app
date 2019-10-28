@@ -19,19 +19,54 @@
         <%= yield %>
 
         <div class="sidebar">
+
+          <%if Helpers.is_logged_in?(session)%>
           <ul>
             <li>
-              <form action="/register">
-                  <input type="submit" value="Register For An Account" />
+              <form action="/projects">
+                  <input type="submit" value="View All Projects" />
               </form>
             </li>
             <br>
             <li>
-              <form action="/signin">
-                  <input type="submit" value="Sign In to the Lab" />
+              <form action="/scientists/<%=Helpers.current_user(session).slug%>">
+                  <input type="submit" value="View My Projects" />
+              </form>
+            </li>
+            <br>
+            <li>
+              <form action="/projects/new">
+                  <input type="submit" value="Create New Project" />
+              </form>
+            </li>
+            <br>
+            <li>
+              <form action="/signout">
+                  <input type="submit" value="Sign Out" />
               </form>
             </li>
           </ul>
+          <%else%>
+            <ul>
+              <li>
+                <form action="/">
+                    <input type="submit" value="Home" />
+                </form>
+              </li>
+              <br>
+              <li>
+                <form action="/register">
+                    <input type="submit" value="Register For An Account" />
+                </form>
+              </li>
+              <br>
+              <li>
+                <form action="/signin">
+                    <input type="submit" value="Sign In to the Lab" />
+                </form>
+              </li>
+            </ul>
+          <%end%>
         </div>
 
       <footer class="branding">

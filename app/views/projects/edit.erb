@@ -1,11 +1,25 @@
 <div class="container">
 
   <div class="col-md-8 col-md-offset-2">
-    <h2>Register</h2>
+    <h2>Edit this Project</h2>
 
     <div class="content">
-      edit a single project here
+      <form action="/projects/<%=@project.id%>" method="POST">
+        <input type="hidden" id="hidden" name="_method" value="PATCH">
+        Title:
+        <br>
+        <input type="text" name="title" id="title" value="<%=@project.title%>">
+        <br>
+        Project Content:
+        <br>
+        <textarea name="content" rows="25" cols="35"><%=@project.content%></textarea>
+        <br>
+        Date Started:
+        <br>
+        <p><input type="date" name="date" id="date" value="<%=@project.date%>"></p>
+        <br>
+        <p><input type="submit" name="submit" value="Edit Project"></p>
+      </form>
     </div>
-
   </div>
 </div>
