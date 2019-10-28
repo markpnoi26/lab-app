@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
       redirect "/register"
     else
       @scientist = Scientist.create(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
-      session[:user_id] = @scientist.id
+      session[:scientist_id] = @scientist.id
       redirect "/projects"
     end
   end
