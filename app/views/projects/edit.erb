@@ -4,6 +4,8 @@
     <h2>Edit this Project</h2>
 
     <div class="content">
+      <p class="error"><%=session[:edit_condition] if session[:edit_condition]%></p>
+      <% session.delete(:edit_condition)%>
       <form action="/projects/<%=@project.id%>" method="POST">
         <input type="hidden" id="hidden" name="_method" value="PATCH">
         Title:

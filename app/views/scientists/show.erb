@@ -1,13 +1,13 @@
 <div class="container">
 
   <div class="col-md-8 col-md-offset-2">
-    <h2>Hello <%=@scientist.name.capitalize%>, Here are a list of all your Projects</h2>
+    <h2>Hello <%=@scientist.name.capitalize%>, here is a list of all your projects:</h2>
 
     <div class="content">
       <ul>
         <% @projects.each do |project|%>
         <li>
-          <h3> <a href="/projects/<%=project.id%>"><%=project.title.capitalize%></a> </h3>
+          <h3> <a href="/projects/<%=project.id%>"><%=project.title.upcase%></a> </h3>
           <p>Date: <%=project.date%></p>
         </li>
         <%end%>

@@ -4,6 +4,8 @@
     <h2>Create a New Project</h2>
 
     <div class="content">
+      <p class="error"><%=session[:new_condition] if session[:new_condition]%></p>
+      <% session.delete(:new_condition)%>
       <form action="/projects" method="POST">
         Title:
         <br>

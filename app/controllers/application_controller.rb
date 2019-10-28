@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/register" do
-    @existing_scientist = Scientist.find_by(username: params[:username])
+    @existing_scientist = Scientist.find_by(username: params[:username].downcase)
     if params[:name] == "" || params[:username] == "" || params[:email] == "" || params[:password] == ""
       session[:register_condition] = "Cannot register, some fields were left empty."
       redirect "/register"
@@ -30,7 +30,7 @@ class ApplicationController < Sinatra::Base
       session[:register_condition] = "Username already exist, enter a different one."
       redirect "/register"
     else
-      @scientist = Scientist.create(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
+      @scientist = Scientist.create(name: params[:name], username: params[:username].downcase, email: params[:email], password: params[:password])
       session[:scientist_id] = @scientist.id
       redirect "/projects"
     end
@@ -46,7 +46,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/sign_in" do
-    @scientist = Scientist.find_by(username: params[:username])
+    @scientist = Scientist.find_by(username: params[:username].downcase)
     if @scientist && @scientist.authenticate(params[:password])
       session[:scientist_id] = @scientist.id
       redirect "/projects"

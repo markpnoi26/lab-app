@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
       Project.create(title: params[:title], content: params[:content], date: params[:date], scientist_id: session[:scientist_id])
       redirect "/projects"
     else
+      session[:new_condition] = "Some fields were left empty."
       redirect "/projects/new"
     end
   end
@@ -56,6 +57,7 @@ class ProjectsController < ApplicationController
       @project.update(title: params[:title], content: params[:content], date: params[:date])
       redirect "/projects/#{params[:id]}"
     else
+      session[:edit_condition] = "Cannot edit, some fields were left empty."
       redirect "/projects/#{params[:id]}/edit"
     end
   end
