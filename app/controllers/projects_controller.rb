@@ -6,7 +6,8 @@ class ProjectsController < ApplicationController
       @projects = Project.all
       erb :"projects/index"
     else
-      redirect "/signin"
+      session[:sign_in_condition] = "You must be signed in to access this information."
+      redirect "/sign_in"
     end
   end
 
@@ -15,7 +16,8 @@ class ProjectsController < ApplicationController
       @scientist = Scientist.find_by_id(session[:scientist_id])
       erb :"projects/new"
     else
-      redirect "/signin"
+      session[:sign_in_condition] = "You must be signed in to access this form."
+      redirect "/sign_in"
     end
   end
 
@@ -35,7 +37,8 @@ class ProjectsController < ApplicationController
       @project = Project.find_by_id(params[:id])
       erb :"projects/show"
     else
-      redirect "/signin"
+      session[:sign_in_condition] = "You must be signed in to access this information."
+      redirect "/sign_in"
     end
   end
 
@@ -47,7 +50,8 @@ class ProjectsController < ApplicationController
     elsif @user
       redirect "/projects"
     else
-      redirect "/signin"
+      session[:sign_in_condition] = "You must be signed in to edit this information."
+      redirect "/sign_in"
     end
   end
 
@@ -71,7 +75,8 @@ class ProjectsController < ApplicationController
     elsif @user
       redirect "/projects"
     else
-      redirect "/signin"
+      session[:sign_in_condition] = "You must be signed in to delete this information."
+      redirect "/sign_in"
     end
   end
 

@@ -5,14 +5,20 @@ class ScientistsController < ApplicationController
       @scientist = Scientist.find_by_id(session[:scientist_id])
       redirect "/users/#{@scientist.slug}"
     else
-      redirect "/login"
+      session[:sign_in_condition] = "You must be signed in to access this information."
+      redirect "/sign_in"
     end
   end
 
   get "/scientists/:slug" do
-    @scientist = Scientist.find_by_slug(params[:slug])
-    @projects = @scientist.projects
-    erb :"scientists/show"
+    if session[:scientist_id]
+      @scientist = Scientist.find_by_slug(params[:slug])
+      @projects = @scientist.projects
+      erb :"scientists/show"
+    else
+      session[:sign_in_condition] = "You must be signed in to access this information."
+      redirect "/sign_in"
+    end
   end
 
 end
