@@ -4,7 +4,8 @@
     <h2>Register</h2>
 
     <div class="content">
-      <p><%=@session_message if @session_message%></p>
+      <p><%=session[:register_condition] if session[:register_condition]%></p>
+      <%session.delete(:register_condition)%>
       <form action="/register" method="POST">
         Name:
         <br>
