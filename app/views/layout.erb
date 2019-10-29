@@ -21,21 +21,22 @@
   <body>
     <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+
     <div class="w3-container">
       <h3 class="w3-padding-64"><b><strong>LabApp</strong><br>Menu</b></h3>
     </div>
-    <div class="w3-bar-block">
 
-    <%if Helpers.is_logged_in?(session)%>
-      <a href="/projects" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View All Projects</a>
-      <a href="/scientists/<%=Helpers.current_user(session).slug%>" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View My Projects</a>
-      <a href="/projects/new" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Create a New Project</a>
-      <a href="/sign_out" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sign Out</a>
-    <%else%>
-      <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
-      <a href="/register" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Register</a>
-      <a href="/sign_in" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sign In</a>
-    <%end%>
+    <div class="w3-bar-block">
+      <%if Helpers.is_logged_in?(session)%>
+        <a href="/projects" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View All Projects</a>
+        <a href="/scientists/<%=Helpers.current_user(session).slug%>" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View My Projects</a>
+        <a href="/projects/new" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Create a New Project</a>
+        <a href="/sign_out" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sign Out</a>
+      <%else%>
+        <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+        <a href="/register" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Register</a>
+        <a href="/sign_in" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sign In</a>
+      <%end%>
     </div>
     </nav>
 
