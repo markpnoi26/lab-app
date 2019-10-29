@@ -4,17 +4,23 @@ Lab-App solves a problem in our lab and makes it easy to keep track multiple pro
 
 ### Installing
 
-clone this repo
-run ``` bundle install ```
-run ```rake db:migrate```
+* clone this repo
+
+* run ```$ bundle install ```
+* run ```$ rake db:migrate```
 
 ## Deployment
 
-run ```shotgun```
+* run ```$ shotgun```
+* copy IP address and run on your web browser
 
 ## Getting Started
 
 Follow the instructions in the homepage of the web application, and sign in to view all the projects and access features of creating a project.
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/markpnoi26/lab-app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Authors
 
@@ -27,4 +33,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* The people that built Sinatra framework and Flatiron school for providing the knowledge and tools to complete this project
+* The people that built Sinatra framework and Flatiron School for providing the knowledge and tools to complete this project
