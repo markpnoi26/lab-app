@@ -31,6 +31,7 @@ class ApplicationController < Sinatra::Base
       redirect "/register"
     else
       @scientist = Scientist.create(name: params[:name], username: params[:username].downcase, email: params[:email], password: params[:password])
+      session.clear
       session[:scientist_id] = @scientist.id
       redirect "/projects"
     end
@@ -48,6 +49,7 @@ class ApplicationController < Sinatra::Base
   post "/sign_in" do
     @scientist = Scientist.find_by(username: params[:username].downcase)
     if @scientist && @scientist.authenticate(params[:password])
+      session.clear
       session[:scientist_id] = @scientist.id
       redirect "/projects"
     else
