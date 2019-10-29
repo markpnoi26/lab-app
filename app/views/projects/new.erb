@@ -1,27 +1,21 @@
-<div class="container">
-
-  <div class="col-md-8 col-md-offset-2">
-    <h2>Create a New Project</h2>
-
-    <div class="content">
-      <p class="error"><%=session[:new_condition] if session[:new_condition]%></p>
-      <% session.delete(:new_condition)%>
-      <form action="/projects" method="POST">
-        Title:
-        <br>
-        <input type="text" name="title" id="title">
-        <br>
-        Project Content:
-        <br>
-        <textarea name="content" rows="25" cols="35"></textarea>
-        <br>
-        Date Started:
-        <br>
-        <p><input type="date" name="date" id="date"></p>
-        <br>
-        <p><input type="submit" name="submit" value="Create New Project"></p>
-      </form>
-    </div>
-
+<div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Create a New Project.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p class="error"><%=session[:new_condition] if session[:new_condition]%></p>
+    <% session.delete(:new_condition)%>
+    <form action="/projects" method="POST">
+      <div class="w3-section">
+        <label>Title:</label>
+        <input class="w3-input w3-border" type="text" id="title" name="title" required>
+      </div>
+      <div class="w3-section">
+        <label>Project Content:</label>
+        <textarea class="w3-input w3-border" rows="25" type="content" id="content" name="content" required></textarea>
+      </div>
+      <div class="w3-section">
+        <label>Date Started:</label>
+        <input class="w3-input w3-border" type="date" id="date" name="date" required>
+      </div>
+      <input class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit" id="Submit" value="Create New Project">
+    </form>
   </div>
-</div>

@@ -1,29 +1,20 @@
-<div class="container">
+<div class="w3-container" style="margin-top:80px" id="showcase">
+  <h1 class="w3-jumbo"><b><%=@project.title.upcase%></b></h1>
+  <h1 class="w3-xxxlarge w3-text-red"><b>by: <%=@project.scientist.name.upcase%> | <%=@project.date%></b></h1>
+  <hr style="width:50px;border:5px solid red" class="w3-round">
+  <p><%=@project.content%></p>
+</div>
 
-  <div class="col-md-8 col-md-offset-2">
-    <h2><%=@project.title.upcase%></h2>
-
-    <div class="content">
-
-      by: <%=@project.scientist.name.upcase%> | <%=@project.date%> </p>
-
-      <p><%=@project.content%></p>
-
-      <%  if Helpers.current_user(session) == @project.scientist %>
-        <form>
-          <button type="submit" id="edit_project" formaction="/projects/<%=@project.id%>/edit">Edit Project</button>
-        </form>
-        <br>
-        <form action="/projects/<%=@project.id%>" method="post">
-          <input type="hidden" id="hidden" name="_method" value="DELETE">
-          <input type="submit" id="delete" name="delete" value="Delete Project">
-        </form>
-        <br>
-        <% else%>
-        <h4> You must be the starter of this project to edit/delete it. Contact the other scientist to assign ownership of this project to you.</h4>
-      <%end%>
-
-    </div>
-
-  </div>
+<div class="w3-container" id="contact" style="margin-top:75px">
+  <%  if Helpers.current_user(session) == @project.scientist %>
+  <form action="/projects/<%=@project.id%>/edit?" method="GET">
+    <input class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit" id="Submit" value="Edit this Project">
+  </form>
+  <form action="/projects/<%=@project.id%>" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="DELETE">
+    <input class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit" id="Submit" value="Delete this Project">
+  </form>
+  <%else%>
+  <h4> You must be the starter of this project to edit/delete it. Contact the other scientist to assign ownership of this project to you.</h4>
+  <%end%>
 </div>

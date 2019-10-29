@@ -1,24 +1,17 @@
-<div class="container">
-
-  <div class="col-md-8 col-md-offset-2">
-    <h2>Sign In</h2>
-
-    <div class="content">
-      <p class="error"><%=session[:sign_in_condition] if session[:sign_in_condition]%></p>
-      <% session.delete(:sign_in_condition)%>
-      <form action="/sign_in" method="POST">
-        Username:
-        <br>
-        <input type="text" name="username" id="scientist_username">
-        <br>
-        Password:
-        <br>
-        <input type="password" name="password" id="scientist_password">
-        <br>
-        <input type="submit" id="Submit" value="Sign In">
-        <br>
-      </form>
-    </div>
-
+<div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Sign In.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p><%=session[:sign_in_condition] if session[:sign_in_condition]%></p>
+    <% session.delete(:sign_in_condition)%>
+    <form action="/sign_in" method="POST">
+      <div class="w3-section">
+        <label>Username:</label>
+        <input class="w3-input w3-border" type="text" id="scientist_username" name="username" required>
+      </div>
+      <div class="w3-section">
+        <label>Password</label>
+        <input class="w3-input w3-border" type="password" id="scientist_password" name="password" required>
+      </div>
+      <input class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit" id="Submit" value="Sign In">
+    </form>
   </div>
-</div>

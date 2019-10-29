@@ -6,70 +6,73 @@
 
     <title>LabApp</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+    body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+    body {font-size:16px;}
+    .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+    .w3-half img:hover{opacity:1}
+    </style>
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <div class="wrapper">
-
-        <%= yield %>
-
-        <div class="sidebar">
-
-          <%if Helpers.is_logged_in?(session)%>
-          <ul>
-            <li>
-              <form action="/projects">
-                  <input type="submit" value="View All Projects" />
-              </form>
-            </li>
-            <br>
-            <li>
-              <form action="/scientists/<%=Helpers.current_user(session).slug%>">
-                  <input type="submit" value="View My Projects" />
-              </form>
-            </li>
-            <br>
-            <li>
-              <form action="/projects/new">
-                  <input type="submit" value="Create New Project" />
-              </form>
-            </li>
-            <br>
-            <li>
-              <form action="/sign_out">
-                  <input type="submit" value="Sign Out" />
-              </form>
-            </li>
-          </ul>
-          <%else%>
-            <ul>
-              <li>
-                <form action="/">
-                    <input type="submit" value="Home" />
-                </form>
-              </li>
-              <br>
-              <li>
-                <form action="/register">
-                    <input type="submit" value="Register For An Account" />
-                </form>
-              </li>
-              <br>
-              <li>
-                <form action="/sign_in">
-                    <input type="submit" value="Sign In to the Lab" />
-                </form>
-              </li>
-            </ul>
-          <%end%>
-        </div>
-
-      <footer class="branding">
-        <small>&copy; 2019 <strong>LabApp</strong></small>
-      </footer>
+    <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+    <div class="w3-container">
+      <h3 class="w3-padding-64"><b><strong>LabApp</strong><br>Menu</b></h3>
     </div>
+    <div class="w3-bar-block">
+
+    <%if Helpers.is_logged_in?(session)%>
+      <a href="/projects" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View All Projects</a>
+      <a href="/scientists/<%=Helpers.current_user(session).slug%>" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View My Projects</a>
+      <a href="/projects/new" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Create a New Project</a>
+      <a href="/sign_out" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sign Out</a>
+    <%else%>
+      <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+      <a href="/register" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Register</a>
+      <a href="/sign_in" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sign In</a>
+    <%end%>
+    </div>
+    </nav>
+
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+      <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+      <span>Lab App</span>
+    </header>
+
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+        <%= yield %>
+    </div>
+
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">&copy; <strong>LabApp</strong></p></div>
+
+    <script>
+    // Script to open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+
+    // Modal Image Gallery
+    function onClick(element) {
+      document.getElementById("img01").src = element.src;
+      document.getElementById("modal01").style.display = "block";
+      var captionText = document.getElementById("caption");
+      captionText.innerHTML = element.alt;
+    }
+    </script>
+
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   </body>

@@ -1,19 +1,18 @@
-<div class="container">
+<div class="w3-container" id="packages" style="margin-top:75px">
+   <h1 class="w3-xxxlarge w3-text-red"><b>Hello <%=@scientist.name.capitalize%></b></h1>
+   <hr style="width:50px;border:5px solid red" class="w3-round">
+   <p>here is a list of all your projects:</p>
+</div>
 
-  <div class="col-md-8 col-md-offset-2">
-    <h2>Hello <%=@scientist.name.capitalize%>, here is a list of all your projects:</h2>
-
-    <div class="content">
-      <ul>
-        <% @projects.each do |project|%>
-        <li>
-          <h3> <a href="/projects/<%=project.id%>"><%=project.title.upcase%></a> </h3>
-          <p>Date: <%=project.date%></p>
-        </li>
-        <%end%>
-      </ul>
-
-    </div>
-
+<div class="w3-row-padding">
+  <div class="w3">
+    <ul class="w3-ul w3-light-grey w3-center">
+    <% @projects.each do |project|%>
+      <li class="w3-padding-16">
+        <h2><a href="/projects/<%=project.id%>"><%=project.title.upcase%></a></h2>
+        <span class="w3-opacity">Date: <%=project.date%></span>
+      </li>
+    <%end%>
+    </ul>
   </div>
 </div>
