@@ -1,4 +1,4 @@
-# Project Title
+# LabApp
 
 Lab-App solves a problem in our lab and makes it easy to keep track multiple projects and share projects to each scientist. In a lab, a scientist could be working on any number of projects, while another scientist is working on another project. These projects do not have immidiate relations to one another, but sometimes test results/conclusion from another experiment is needed to have another continue. The Lab-App solves this issue by categorizing each project to an individual scientist. A scientist can edit/delete or even assign a current project to another scientist if they wish. This resolves the head ache of having to chase information, when it is available to everyone.
 
