@@ -1,22 +1,32 @@
 <div class="w3-container" id="contact" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Edit this Project.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p class="error"><%=session[:edit_condition] if session[:edit_condition]%></p>
-    <% session.delete(:edit_condition)%>
-    <form action="/projects/<%=@project.id%>" method="POST">
-      <input type="hidden" id="hidden" name="_method" value="PATCH">
-      <div class="w3-section">
-        <label>Title:</label>
-        <input class="w3-input w3-border" type="text" id="title" name="title" value="<%=@project.title%>" required>
-      </div>
-      <div class="w3-section">
-        <label>Project Content:</label>
-        <textarea class="w3-input w3-border" rows="25" type="content" id="content" name="content" required><%=@project.content%></textarea>
-      </div>
-      <div class="w3-section">
-        <label>Date Started:</label>
-        <input class="w3-input w3-border" type="date" id="date" name="date" value="<%=@project.date%>" required>
-      </div>
-      <input class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit" id="Submit" value="Edit this Project">
-    </form>
-  </div>
+  <h1 class="w3-xxxlarge w3-text-red"><b>Edit this Project.</b></h1>
+  <hr style="width:50px;border:5px solid red" class="w3-round">
+  <p class="error"><%=session[:edit_condition] if session[:edit_condition]%></p>
+  <% session.delete(:edit_condition)%>
+  <form action="/projects/<%=@project.id%>" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="PATCH">
+    <div class="w3-section">
+      <label>Title:</label>
+      <input class="w3-input w3-border" type="text" id="title" name="title" value="<%=@project.title%>" required>
+    </div>
+    <div class="w3-section">
+      <label>Project Content:</label>
+      <textarea class="w3-input w3-border" rows="25" type="content" id="content" name="content" required><%=@project.content%></textarea>
+    </div>
+    <div class="w3-section">
+      <label>Date Started:</label>
+      <input class="w3-input w3-border" type="date" id="date" name="date" value="<%=@project.date%>" required>
+    </div>
+    <div class="w3-section">
+      <label><strong>Assign/Current Scientist:</strong></label>
+      <%Scientist.all.each do |scientist|%>
+        <input class="w3-input w3-border" type="radio" name="scientist_id" value="<%=scientist.id%>" <%='checked' if scientist == @scientist %>>  -<%=scientist.name.upcase%>- <%="(current scientist of this project)" if scientist == @scientist%>
+      <%end%>
+    </div>
+
+    <div class="w3-section">
+      <label> <strong> Warning! changing the current scientist to another scientist will not allow you to edit this experiment anymore. </strong> </label>
+    </div>
+    <input class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit" id="Submit" value="Edit this Project">
+  </form>
+</div>

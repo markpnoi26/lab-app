@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
     @scientist = Scientist.find_by_id(session[:scientist_id])
     if @scientist && @scientist.projects.include?(@project)
       erb :"projects/edit"
-    elsif @user
+    elsif @scientist
       redirect "/projects"
     else
       session[:sign_in_condition] = "You must be signed in to edit this information."
@@ -57,8 +57,9 @@ class ProjectsController < ApplicationController
 
   patch "/projects/:id" do
     if params[:content] != "" && params[:title] != "" && params[:date] != ""
-      @project = Project.find_by(scientist_id: session[:scientist_id], id: params[:id])
-      @project.update(title: params[:title], content: params[:content], date: params[:date])
+      puts params
+      @project = Project.find_by(id: params[:id])
+      @project.update(title: params[:title], content: params[:content], date: params[:date], scientist_id: params[:scientist_id])
       redirect "/projects/#{params[:id]}"
     else
       session[:edit_condition] = "Cannot edit, some fields were left empty."
@@ -72,7 +73,7 @@ class ProjectsController < ApplicationController
     if @scientist && @scientist.projects.include?(@project)
       @project.delete
       redirect "/projects"
-    elsif @user
+    elsif @scientist
       redirect "/projects"
     else
       session[:sign_in_condition] = "You must be signed in to delete this information."
