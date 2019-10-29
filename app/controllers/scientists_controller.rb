@@ -6,7 +6,7 @@ class ScientistsController < ApplicationController
       @scientists = Scientist.all
       erb :"scientists/index"
     else
-      session[:sign_in_condition] = "You must be signed in to access this information."
+      flash[:sign_in_condition] = "You must be signed in to access this information."
       redirect "/sign_in"
     end
   end
@@ -17,7 +17,7 @@ class ScientistsController < ApplicationController
       @projects = @scientist.projects
       erb :"scientists/show"
     else
-      session[:sign_in_condition] = "You must be signed in to access this information."
+      flash[:sign_in_condition] = "You must be signed in to access this information."
       redirect "/sign_in"
     end
   end

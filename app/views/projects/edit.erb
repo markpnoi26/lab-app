@@ -1,8 +1,7 @@
 <div class="w3-container" id="contact" style="margin-top:75px">
   <h1 class="w3-xxxlarge w3-text-red"><b>Edit this Project.</b></h1>
   <hr style="width:50px;border:5px solid red" class="w3-round">
-  <p class="error"><%=session[:edit_condition] if session[:edit_condition]%></p>
-  <% session.delete(:edit_condition)%>
+  <p class="error"><%=flash[:edit_condition] if flash[:edit_condition]%></p>
   <form action="/projects/<%=@project.id%>" method="POST">
     <input type="hidden" id="hidden" name="_method" value="PATCH">
     <div class="w3-section">

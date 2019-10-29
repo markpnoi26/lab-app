@@ -1,8 +1,7 @@
 <div class="w3-container" id="contact" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><b>Register.</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p class="error"><%=session[:register_condition] if session[:register_condition]%></p>
-    <%session.delete(:register_condition)%>
+    <p class="error"><%=flash[:register_condition] if flash[:register_condition]%></p>
     <form action="/register" method="POST">
       <div class="w3-section">
         <label>Name:</label>

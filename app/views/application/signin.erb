@@ -1,8 +1,7 @@
 <div class="w3-container" id="contact" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><b>Sign In.</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p><%=session[:sign_in_condition] if session[:sign_in_condition]%></p>
-    <% session.delete(:sign_in_condition)%>
+    <p><%=flash[:sign_in_condition] if flash[:sign_in_condition]%></p>
     <form action="/sign_in" method="POST">
       <div class="w3-section">
         <label>Username:</label>

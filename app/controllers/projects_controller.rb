@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
       @projects = Project.all
       erb :"projects/index"
     else
-      session[:sign_in_condition] = "You must be signed in to access this information."
+      flash[:sign_in_condition] = "You must be signed in to access this information."
       redirect "/sign_in"
     end
   end
@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
       @scientist = Scientist.find_by_id(session[:scientist_id])
       erb :"projects/new"
     else
-      session[:sign_in_condition] = "You must be signed in to access this form."
+      flash[:sign_in_condition] = "You must be signed in to access this form."
       redirect "/sign_in"
     end
   end
@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
       Project.create(title: params[:title], content: params[:content], date: params[:date], scientist_id: session[:scientist_id])
       redirect "/projects"
     else
-      session[:new_condition] = "Some fields were left empty."
+      flash[:new_condition] = "Some fields were left empty."
       redirect "/projects/new"
     end
   end
@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
       @project = Project.find_by_id(params[:id])
       erb :"projects/show"
     else
-      session[:sign_in_condition] = "You must be signed in to access this information."
+      flash[:sign_in_condition] = "You must be signed in to access this information."
       redirect "/sign_in"
     end
   end
@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
     elsif @scientist
       redirect "/projects"
     else
-      session[:sign_in_condition] = "You must be signed in to edit this information."
+      flash[:sign_in_condition] = "You must be signed in to edit this information."
       redirect "/sign_in"
     end
   end
@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
       @project.update(title: params[:title], content: params[:content], date: params[:date], scientist_id: params[:scientist_id])
       redirect "/projects/#{params[:id]}"
     else
-      session[:edit_condition] = "Cannot edit, some fields were left empty."
+      flash[:edit_condition] = "Cannot edit, some fields were left empty."
       redirect "/projects/#{params[:id]}/edit"
     end
   end
@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
     elsif @scientist
       redirect "/projects"
     else
-      session[:sign_in_condition] = "You must be signed in to delete this information."
+      flash[:sign_in_condition] = "You must be signed in to delete this information."
       redirect "/sign_in"
     end
   end
