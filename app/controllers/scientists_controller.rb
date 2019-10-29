@@ -3,7 +3,8 @@ class ScientistsController < ApplicationController
   get "/scientists" do
     if session[:scientist_id]
       @scientist = Scientist.find_by_id(session[:scientist_id])
-      redirect "/users/#{@scientist.slug}"
+      @scientists = Scientist.all
+      erb :"scientists/index"
     else
       session[:sign_in_condition] = "You must be signed in to access this information."
       redirect "/sign_in"

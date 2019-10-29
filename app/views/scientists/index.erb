@@ -1,0 +1,19 @@
+<div class="w3-container" id="packages" style="margin-top:75px">
+   <h1 class="w3-xxxlarge w3-text-red"><b>Welcome <%=@scientist.name.capitalize%></b></h1>
+   <hr style="width:50px;border:5px solid red" class="w3-round">
+   <p>here are all the list of all the scientists in the lab:</p>
+</div>
+
+<div class="w3-row-padding">
+  <div class="w3">
+    <ul class="w3-ul w3-light-grey w3-center">
+      <li class="w3-dark-grey w3-xlarge w3-padding-32">Scientists</li>
+    <% @scientists.each do |scientist|%>
+      <li class="w3-padding-16">
+        <h2><a href="/scientists/<%=scientist.slug%>"><%=scientist.name.upcase%></a></h2>
+        <span class="w3-opacity">email: <%=scientist.email.upcase%></span>
+      </li>
+    <%end%>
+    </ul>
+  </div>
+</div>
