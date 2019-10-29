@@ -19,9 +19,11 @@
     </div>
     <div class="w3-section">
       <label><strong>Assign/Current Scientist:</strong></label>
-      <%Scientist.all.each do |scientist|%>
-        <input class="w3-input w3-border" type="radio" name="scientist_id" value="<%=scientist.id%>" <%='checked' if scientist == @scientist %>>  -<%=scientist.name.upcase%>- <%="(current scientist of this project)" if scientist == @scientist%>
-      <%end%>
+          <select class="w3-input w3-border" name = "scientist_id">
+            <%Scientist.all.each do |scientist|%>
+              <option value = "<%=scientist.id%>" <%='selected' if scientist == @scientist %>>-<%=scientist.name.upcase%>- <%="(current scientist of this project)" if scientist == @scientist%></option>
+            <%end%>
+         </select>
     </div>
 
     <div class="w3-section">
