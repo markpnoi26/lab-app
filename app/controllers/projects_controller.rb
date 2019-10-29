@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   end
 
   get "/projects/:id" do
-    if session[:scientist_id]
+    if session[:scientist_id] && Project.find_by_id(params[:id])
       @scientist = Scientist.find_by_id(session[:scientist_id])
       @project = Project.find_by_id(params[:id])
       erb :"projects/show"
