@@ -12,7 +12,7 @@ class ScientistsController < ApplicationController
   end
 
   get "/scientists/:slug" do
-    if session[:scientist_id]
+    if session[:scientist_id] && Scientist.find_by_slug(params[:slug])
       @scientist = Scientist.find_by_slug(params[:slug])
       @projects = @scientist.projects
       erb :"scientists/show"
