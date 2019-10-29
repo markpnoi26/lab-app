@@ -34,6 +34,9 @@ class ApplicationController < Sinatra::Base
     elsif @existing_scientist
       session[:register_condition] = "Username already exist, enter a different one."
       redirect "/register"
+    elsif params[:password] != params[:password_confirm]
+      session[:register_condition] = "Passwords did not match."
+      redirect "/register"
     else
       @scientist = Scientist.create(name: params[:name], username: params[:username].downcase, email: params[:email], password: params[:password])
       session.clear
