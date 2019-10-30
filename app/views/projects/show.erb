@@ -15,6 +15,6 @@
     <input class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit" id="Submit" value="Delete this Project">
   </form>
   <%else%>
-  <h4> You must be the starter of this project to edit/delete it. Contact the other scientist to assign ownership of this project to you.</h4>
+  <h4> You must be the starter of this project to edit/delete it. Contact the other scientist at <%=@project.scientist.email%> to assign ownership of this project to you.</h4>
   <%end%>
 </div>
